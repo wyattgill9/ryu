@@ -26,7 +26,9 @@ const char* key_to_string(NormalKeys key) {
         case DELETE: return "Delete";
         case UNDO: return "Undo";
         case REDO: return "Redo";
-        default: return "Unknown key";
+        case SAVE: return "Save";
+        case QUIT: return "Quit";
+        case UNKNOWN: return "Unknown";
     }
 }
 

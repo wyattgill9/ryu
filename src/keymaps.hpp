@@ -19,7 +19,10 @@ enum NormalKeys {
     DELETE,
     UNDO,
     REDO,
-    INSERT
+    INSERT,
+    SAVE,
+    QUIT,
+    UNKNOWN
 };
 
 NormalKeys parse_normal_key();

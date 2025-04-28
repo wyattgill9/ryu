@@ -4,7 +4,7 @@
 
 NormalKeys parse_normal_key() {
     char c;
-    if (read(STDIN_FILENO, &c, 1) != 1) return NormalKeys(-1);
+    if (read(STDIN_FILENO, &c, 1) != 1) return UNKNOWN;
 
     switch (c) {
         case 'i': return INSERT;
@@ -20,6 +20,12 @@ NormalKeys parse_normal_key() {
         case 'u': return UNDO;
         case 18:  return REDO; // ASCII code for Ctrl+R
         case 'd': return DELETE;
-        default: return NormalKeys(-1);
+        case ':': {
+            if (read(STDIN_FILENO, &c, 1) != 1) return UNKNOWN;
+            if (c == 'w') return SAVE;
+            if (c == 'q') return QUIT;
+            return UNKNOWN;
+        }
+        default: return UNKNOWN;
     }
 }
