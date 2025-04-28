@@ -1,13 +1,12 @@
 CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++17 -O2
 LDFLAGS = 
-
 SRC_DIR = ./src
 BUILD_DIR = ./build
 INCLUDE_DIRS = ./include 
 LIB_DIRS = 
+TARGET = ryu
 
-TARGET = my_program
 SRC_FILES = $(wildcard $(SRC_DIR)/*.cpp) 
 OBJ_FILES = $(SRC_FILES:$(SRC_DIR)/%.cpp=$(BUILD_DIR)/%.o)
 
@@ -21,8 +20,10 @@ $(TARGET): $(OBJ_FILES)
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -I$(INCLUDE_DIRS) -c $< -o $@
 
+run: $(TARGET)
+	./$(TARGET)
+
 clean:
 	rm -rf $(BUILD_DIR) $(TARGET)
 
-.PHONY: all clean
-
+.PHONY: all clean run
