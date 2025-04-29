@@ -103,9 +103,6 @@ void printBuffer(const Buffer& buffer) {
     for (size_t i = 0; i < content.size(); ++i) {
         const std::string& line = content[i];
         
-        // Line numbers
-        std::cout << "\x1b[38;5;240m" << std::setw(3) << (i+1) << " \x1b[0m";
-
         for (size_t j = 0; j < line.length(); ++j) {
             if (i == cursor_row && j == cursor_col) {
                 std::cout << "\x1b[30;47m" << line[j] << "\x1b[0m";
